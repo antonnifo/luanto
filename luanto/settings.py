@@ -13,7 +13,13 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '_bm4%du#ncku%wu#20u&sf9pm6kuk!wnjxu+aiv+8e$hsr$*fe'
+SECRET_KEY = os.getenv('SECRET_KEY')
+NAME = os.getenv('NAME')
+HOST = os.getenv('HOST')
+USER = os.getenv('USER')
+PORT = os.getenv('PORT')
+PASSWORD = os.getenv('PASSWORD')
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -73,13 +79,14 @@ WSGI_APPLICATION = 'luanto.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'luanto',
-        'HOST': 'localhost',
-        'USER': 'postgres',
-        'PORT': 5432,
-        'PASSWORD': 'bssc4344',
+        'NAME': NAME,
+        'HOST': HOST,
+        'USER': USER,
+        'PORT': PORT,
+        'PASSWORD': PASSWORD,
     }
 }
+
 
 
 
@@ -125,3 +132,11 @@ STATIC_URL = '/static/'
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+
+# email configs
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+EMAIL_USE_TLS = True
