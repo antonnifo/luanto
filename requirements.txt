@@ -3,7 +3,7 @@ asgiref==3.2.7
 autopep8==1.5.2
 billiard==3.6.3.0
 celery==4.4.4
-Django==3.0.6
+Django==3.0.7
 flower==0.9.4
 humanize==0.5.1
 kombu==4.6.10
