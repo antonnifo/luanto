@@ -4,6 +4,7 @@ Django settings for luanto project.
 """
 
 import os
+from braintree import Configuration, Environment
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -140,3 +141,11 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = os.getenv('EMAIL_HOST_USER')
 EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = True
+
+# Braintree settings
+Configuration.configure(
+    Environment.Sandbox,
+    os.getenv('BRAINTREE_MERCHANT_ID'),
+    os.getenv('BRAINTREE_PUBLIC_KEY'),
+    os.getenv('BRAINTREE_PRIVATE_KEY')
+)
